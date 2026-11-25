@@ -1,0 +1,42 @@
+{
+  // ЗГЕНЕРОВАНО з content/sp/environment/lab05.yml — E11-9, ADR 022.
+  // Правки в цьому файлі перезаписуються наступним прогоном генератора:
+  // змінювати треба середовище в матеріалах, а не копію тут.
+
+  "name": "ЛР5 · Набір програм, що не компілюються (borrow checker)",
+
+  // Збірка з `container.dockerfile` того самого environment-файла: автор уже написав
+  // його як Dockerfile саме робочого простору (тулчейн, компоненти rustup, користувач
+  // для ЛР7). Копія лежить поруч — .devcontainer/Dockerfile.
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "containerEnv": {
+    "RUST_BACKTRACE": "1",
+    "CARGO_TERM_COLOR": "always"
+  },
+
+  // Ставить утиліти з `tools` і садить пасхалку. Скрипт НІКОЛИ не завершується помилкою:
+  // postCreateCommand, що впав, ламає створення простору. Перевірку середовища запускає
+  // сам студент — `bash .devcontainer/verify.sh`.
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  // `container.resources` — мінімальна машина, на якій ця робота має сенс.
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "timonwong.shellcheck"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+
+}

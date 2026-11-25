@@ -1,0 +1,20 @@
+{
+  // ЗГЕНЕРОВАНО — E11-9, ADR 022. Правки тут перезаписуються наступним прогоном
+  // генератора: змінювати треба середовище в матеріалах, а не копію тут.
+  //
+  // Ctrl+Shift+B здає роботу. Рідний механізм VS Code — без розширень, тож працює
+  // і в Codespaces, і в десктопному VS Code, і через Terminal → Run Build Task.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Здати роботу",
+      "type": "shell",
+      "command": "bash .devcontainer/submit.sh",
+      "group": { "kind": "build", "isDefault": true },
+      // `focus` — щоб студент БАЧИВ питання скрипта: без нього панель лишається позаду
+      // й здається, що нічого не сталося, а скрипт тим часом чекає на відповідь.
+      "presentation": { "reveal": "always", "focus": true, "panel": "dedicated" },
+      "problemMatcher": []
+    }
+  ]
+}
