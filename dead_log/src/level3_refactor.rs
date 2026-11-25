@@ -3,10 +3,10 @@
 use std::time::Instant;
 
 pub fn decode_all(fragments: Vec<String>) -> Vec<String> {
-    let mut result = Vec::new();
-    for f in fragments.clone() {
-        let up = f.clone().to_uppercase();
-        result.push(up.clone());
+    let mut result = Vec::with_capacity(fragments.len());
+    for f in &fragments {
+        let up = f.to_uppercase();
+        result.push(up);
     }
     result
 }
@@ -14,7 +14,7 @@ pub fn decode_all(fragments: Vec<String>) -> Vec<String> {
 pub fn measure() {
     let fragments: Vec<String> = (0..50_000).map(|i| format!("fragment-{i}")).collect();
     let t = Instant::now();
-    let decoded = decode_all(fragments.clone());
+    let decoded = decode_all(fragments);
     println!("decode_all: {} фрагментів за {:?}", decoded.len(), t.elapsed());
 }
 

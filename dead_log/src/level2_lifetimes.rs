@@ -1,7 +1,7 @@
 // Рівень 2 (варіант B). Компілятор не може сам вивести, з яким із двох входів пов'язаний
 // результат, і відмовляє з E0106. Додай коректну анотацію часу життя `'a`.
 
-pub fn pick_longer_coordinate(a: &str, b: &str) -> &str {
+pub fn pick_longer_coordinate<'a>(a: &'a str, b: &'a str) -> &'a str {
     if a.len() >= b.len() {
         a
     } else {

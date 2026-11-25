@@ -3,11 +3,11 @@
 // `decode_fragment` і рядок `format!` з двома підстановками не змінюй.
 
 pub fn decode_fragment(log: String) -> String {
-    let decoded = process(log); // log переміщується (move) у process
+    let decoded = process(&log);
     format!("{} / оригінал: {}", decoded, log) // помилка: log вже переміщено
 }
 
-fn process(s: String) -> String {
+fn process(s: &str) -> String {
     s.to_uppercase()
 }
 
